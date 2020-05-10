@@ -9,12 +9,13 @@ from store.models import Product, Order
 import random
 
 def get_all_products (request):
+    
     products = Product.objects.all()
     
-    page_size = request.GET.get('page_size')
+    page_size = request.GET.get('page_size', 25)
     paginator = Paginator(products, page_size)
 
-    page_number = request.GET.get('page_number')
+    page_number = request.GET.get('page_number', 1)
     page_obj = paginator.get_page(page_number)
 
     products_json = serializers.serialize('json', page_obj)
@@ -25,8 +26,11 @@ def get_all_products (request):
 
 
 def get_product_by_id (request, pk):
-    product = Product.objects.get(pk=pk)
-   
+    try:
+        product = Product.objects.get(pk=pk)
+    except:
+        return HttpResponse('product not found', status=400)
+    
     orders = product.items.distinct('order').values('order')
 
     soldWithProducts = {}
