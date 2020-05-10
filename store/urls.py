@@ -18,7 +18,7 @@ from django.urls import path
 from django.http import JsonResponse
 
 from store.routes.products import get_all_products, get_product_by_id, generate_data
-from store.routes.orders import get_all_orders
+from store.routes.orders import get_all_orders, order_detail
 
 
 def profile(request):
@@ -34,7 +34,8 @@ urlpatterns = [
     path('products/', get_all_products),
     path('products/<int:pk>', get_product_by_id),
     path('generateData', generate_data),
-    path('orders/', get_all_orders)
+    path('orders/', get_all_orders),
+    path('orders/<int:pk>', order_detail)
 ]
 
 

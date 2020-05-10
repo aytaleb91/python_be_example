@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.core import serializers
 from django.core.paginator import Paginator
+from django.shortcuts import render
+
 
 from store.models import Order, Product
 
@@ -18,3 +20,20 @@ def get_all_orders (request):
 
 
     return HttpResponse(orders_json, content_type='application/json')
+
+
+def order_detail(request, pk):
+
+    order = Order.objects.get(pk=pk)
+
+    items = order.items.all()
+
+    context = {
+
+        "order": order,
+
+        "items": items,
+
+    }
+
+    return render(request, "order_detail.html", context)

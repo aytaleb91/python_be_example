@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+        <div class="sans-serif">
+
+            <h1>Order: {{ order.pk }}</h1>
+
+            <h2>Oder total: {{ order.total }}$</h2>
+
+            <h2>Items</h2>
+
+        
+
+            <table>
+                <tr>
+                  <th>Product name</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+                  
+        {% for v in items %}
+            <tr>
+                <td>{{ v.product.name }}</td>
+                <td>{{ v.quantity }}</td>
+                <td>{{ v.total }}$</td>
+            </tr>
+
+        {% endfor %}
+            </table>
+        </div>
+
+{% endblock %}
