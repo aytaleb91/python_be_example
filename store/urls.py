@@ -15,20 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.http import JsonResponse
 
 from store.routes.products import get_all_products, get_product_by_id, generate_data
 from store.routes.orders import get_all_orders, order_detail
 
-
-def profile(request):
-    data = {
-        'name': 'Vitor',
-        'location': 'Finland',
-        'is_active': True,
-        'count': 28
-    }
-    return JsonResponse(data)
 
 urlpatterns = [
     path('products/', get_all_products),
