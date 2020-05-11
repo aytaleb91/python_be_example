@@ -25,6 +25,7 @@ steps:
 the app will be running on `localhost:8000`
 
 
+## Endpoint
 
 ```http
 GET /products
@@ -54,6 +55,8 @@ a list of products
 ]
 ```
 
+## Endpoint
+
 ```http
 GET /orders
 ```
@@ -81,6 +84,7 @@ a list of orders
     }
 ]
 ```
+## Endpoint
 
 ```http
 GET /products/<int:pk>
@@ -113,6 +117,7 @@ product, list of products was sold with the product ordered by the times a produ
     ]
 }
 ```
+## Endpoint
 
 ```http
 GET /orders/<int:pk>
@@ -121,6 +126,8 @@ GET /orders/<int:pk>
 ## Responses
 
 an html page of order detail
+
+## Endpoint
 
 ```http
 GET /generateData/
